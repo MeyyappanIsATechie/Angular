@@ -1,0 +1,49 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title> Australian Shepherd</mat-card-title>
+    <mat-card-subtitle>Herding group</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content> </mat-card-content>
+</mat-card>
+<p>{{ title | uppercase }}</p>
+<p>{{ subtitle | lowercase }}</p>
+<p><strong>Date Pipe:</strong> {{ today | date : "fullDate" }}</p>
+<!-- Currency Pipe -->
+<p><strong>Currency Pipe:</strong> {{ price | currency : "USD" : true }}</p>
+
+<!-- Decimal Pipe -->
+<p><strong>Decimal Pipe:</strong> {{ 3.14159 | number : "1.2-2" }}</p>
+
+<!-- Percent Pipe -->
+<p><strong>Percent Pipe:</strong> {{ percentage | percent }}</p>
+
+<!-- Json Pipe -->
+<p><strong>Json Pipe:</strong></p>
+<pre>{{ user | json }}</pre>
+
+<!-- Slice Pipe -->
+<p><strong>Slice Pipe (String):</strong> {{ text | slice : 1 : 3 }}</p>
+<p><strong>Slice Pipe (Array):</strong> {{ numbers | slice : 1 : 3 }}</p>
+
+<!-- Async Pipe -->
+<p><strong>Async Pipe:</strong> {{ observable$ | async }}</p>
+
+<!-- Example of a Custom Pipe (reverseStr) -->
+<p><strong>Custom Pipe (Reverse String):</strong> {{ text | reverseStr }}</p>
+<br />
+<!--property binding-disable checkbox-->
+
+<button (click)="toggleDisabled()">Toggle checkbox</button>
+<br />
+<input type="checkbox" [disabled]="isDisabled" />
+<br />
+<input [value]="isDisabled" />
+<br />
+<mat-checkbox [(ngModel)]="isDisabled">Disable property binding</mat-checkbox>
+<br />
+<!-- Template reference variable -->
+<input type="text" [(ngModel)]="name" #nameInput [disabled]="isDisabled" />
+<br />
+<p>Value of name: {{ nameInput.value }}</p>
+<br />
+<input (keyup)="updateTitle($event)" />
