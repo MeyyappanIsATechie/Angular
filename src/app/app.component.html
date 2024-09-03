@@ -1,6 +1,32 @@
-<a routerLink="home">Home</a>
-<a routerLink="about">About</a>
-<a routerLink="contact">Contact</a>
-<a routerLink="support">Support</a>
+<mat-toolbar>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Angular 18</span>
+  <span class="example-spacer"></span>
+  <button mat-button routerLink="home">Home</button>
+  <button mat-button routerLink="about">About</button>
+  <button mat-button routerLink="contact">Contact</button>
+  <button mat-button routerLink="support">Support</button>
+  <button mat-button routerLink="customer">Customer</button>
+  <button
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+  >
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
 
 <router-outlet></router-outlet>
