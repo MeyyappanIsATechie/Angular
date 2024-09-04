@@ -11,6 +11,7 @@ import { childauthGuard } from './guard/childauth.guard';
 import { authdeactGuard } from './guard/authdeact.guard';
 import { LoginComponent } from './common/login/login.component';
 import { RegisterComponent } from './common/register/register.component';
+import { ProductComponent } from './common/product/product.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -67,6 +68,11 @@ export const routes: Routes = [
         component: AddComponent,
       },
     ],
+  },
+  {
+    path: 'product',
+    component: ProductComponent,
+    canActivate: [authGuard],
   },
   { path: '**', component: StatusComponent },
 ];
