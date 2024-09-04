@@ -31,8 +31,18 @@ export class HomeComponent {
   text = 'Angular';
   numbers = [1, 2, 3, 4, 5];
   observable$: Observable<string> = of('Hello from Observable!');
-  isDisabled: boolean = true;
+  isDisabled: boolean = false;
   name: string = '';
+  _class = 'active';
+  _color = 'yellow';
+  _font = '36px';
+  isDisplay = false;
+  ticketInfo = [
+    { id: 1, name: 'Angular', color: 'red' },
+    { id: 2, name: 'React', color: 'blue' },
+    { id: 3, name: 'Vue', color: 'green' },
+  ];
+  _view = 'home';
   toggleDisabled() {
     this.isDisabled = !this.isDisabled;
   }

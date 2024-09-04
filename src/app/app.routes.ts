@@ -8,6 +8,7 @@ import { AddComponent } from './common/add/add.component';
 import { StatusComponent } from './common/status/status.component';
 import { authGuard } from './guard/auth.guard';
 import { childauthGuard } from './guard/childauth.guard';
+import { authdeactGuard } from './guard/authdeact.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -28,7 +29,11 @@ export const routes: Routes = [
   },
   {
     path: 'contact',
-    component: ContactComponent,
+    loadComponent: () => {
+      return import('./common/contact/contact.component').then(
+        (m) => m.ContactComponent
+      );
+    },
     canActivate: [authGuard],
   },
   {
@@ -41,6 +46,7 @@ export const routes: Routes = [
     component: CustomerComponent,
     canActivate: [authGuard],
     canActivateChild: [childauthGuard],
+    canDeactivate: [authdeactGuard],
     children: [
       {
         path: 'add',

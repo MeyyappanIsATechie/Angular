@@ -47,3 +47,35 @@
 <p>Value of name: {{ nameInput.value }}</p>
 <br />
 <input (keyup)="updateTitle($event)" />
+<br />
+<div [ngClass]="_class">
+  <h2>directive example</h2>
+</div>
+<br />
+<div [ngClass]="{ active: isDisabled, inactive: !isDisabled }">
+  <h2>directive example</h2>
+</div>
+<br />
+<div *ngIf="isDisplay">
+  <h2 [ngStyle]="{ color: _color, 'font-size': _font }">directive example</h2>
+</div>
+<br />
+<div
+  *ngFor="let item of ticketInfo"
+  [ngStyle]="{ 'background-color': item.color, color: 'white' }"
+>
+  <span>Id: {{ item.id }}</span>
+  <h4>{{ item.name | json }}</h4>
+</div>
+<br />
+<div [ngSwitch]="_view">
+  <div *ngSwitchCase="'home'">
+    <h2>this is home view</h2>
+  </div>
+  <div *ngSwitchCase="'about'">
+    <h2>this is about view</h2>
+  </div>
+  <div *ngSwitchDefault="">
+    <h2>this is default view</h2>
+  </div>
+</div>
