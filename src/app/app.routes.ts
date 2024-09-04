@@ -9,6 +9,8 @@ import { StatusComponent } from './common/status/status.component';
 import { authGuard } from './guard/auth.guard';
 import { childauthGuard } from './guard/childauth.guard';
 import { authdeactGuard } from './guard/authdeact.guard';
+import { LoginComponent } from './common/login/login.component';
+import { RegisterComponent } from './common/register/register.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -26,6 +28,14 @@ export const routes: Routes = [
     path: 'about',
     component: AboutComponent,
     canActivate: [authGuard],
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
   },
   {
     path: 'contact',

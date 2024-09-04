@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": "admin",
+      "name": "adminuser",
+      "password": "Admin@123",
+      "role": "admin"
+    },
+    {
+      "id": "normaluser",
+      "name": "user",
+      "password": "User@123",
+      "role": "user"
+    },
+    {
+      "id": "meyyappan",
+      "name": "Meyyappan R",
+      "email": "meyy@gmail.com",
+      "password": "Meyy@123",
+      "confirmPassword": "Meyy@123",
+      "role": "manager",
+      "gender": "m"
+    }
+  ]
+}
