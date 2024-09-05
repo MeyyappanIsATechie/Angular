@@ -1,9 +1,10 @@
 <form class="example-form" [formGroup]="productForm" (ngSubmit)="ProceedSave()">
   <mat-card>
     <mat-card-header>
-      <h2>Create Product</h2>
+      <h2>{{ _dialogdata.title }}</h2>
     </mat-card-header>
     <mat-card-content>
+      @if(this._dialogdata.id!=0){
       <mat-form-field class="example-full-width">
         <mat-label>Id</mat-label>
         <input
@@ -14,7 +15,7 @@
           [disabled]="true"
         />
       </mat-form-field>
-      <!--password-->
+      }
       <mat-form-field class="example-full-width">
         <mat-label>Name</mat-label>
         <input
@@ -50,7 +51,7 @@
     </mat-card-content>
     <mat-card-actions>
       <button type="submit" mat-raised-button color="primary">Save</button>
-      <button mat-raised-button color="accent" routerLink="/product">
+      <button mat-raised-button color="accent" (click)="goToProductPage()">
         Cancel
       </button>
     </mat-card-actions>

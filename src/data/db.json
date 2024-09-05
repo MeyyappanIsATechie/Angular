@@ -43,6 +43,34 @@
       "price": 1500,
       "description": "this is product 3",
       "status": false
+    },
+    {
+      "id": 4,
+      "name": "product 4",
+      "price": 105,
+      "description": "brand new",
+      "status": true
+    },
+    {
+      "id": 5,
+      "name": "product 5",
+      "price": 1,
+      "description": "new",
+      "status": true
+    },
+    {
+      "id": 6,
+      "name": "product 6",
+      "price": 1,
+      "description": "1",
+      "status": true
+    },
+    {
+      "id": 7,
+      "name": "fg",
+      "price": 1,
+      "description": "dfef",
+      "status": true
     }
   ]
 }

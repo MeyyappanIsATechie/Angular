@@ -58,19 +58,35 @@ export class ProductComponent implements OnInit {
   }
 
   createProduct() {
-    this.openPopup();
+    this.openPopup(0, 'Create Product');
   }
 
-  openPopup() {
+  openPopup(id: number, title: string) {
     this.dialog
       .open(AddproductComponent, {
         width: '40%',
         enterAnimationDuration: '500ms',
         exitAnimationDuration: '500ms',
+        data: { id: id, title: title },
       })
       .afterClosed()
       .subscribe((result: any) => {
         this.loadProducts();
       });
+  }
+
+  editProduct(id: any) {
+    //conversion
+    const newId: number = Number(id);
+    this.openPopup(newId, 'Edit Product');
+  }
+
+  deleteProduct(id: number) {
+    if (confirm('Are you sure you want to delete this product?')) {
+      this.productService.deleteProduct(id).subscribe(() => {
+        alert('Product deleted successfully');
+        this.loadProducts();
+      });
+    }
   }
 }
