@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginModel } from '../model/login.model';
 import { User } from '../model/user.model';
@@ -26,5 +26,12 @@ export class MasterService {
 
   getAllCustomers() {
     return this.http.get<Customer[]>('https://dummyjson.com/users');
+  }
+  getAllCustomersLocally() {
+    let token = ''; //actual token
+    let _head = new HttpHeaders().set('Authorization', 'bearer ' + token);
+    return this.http.get<Customer[]>('https://dummyjson.com/users', {
+      headers: _head,
+    });
   }
 }
