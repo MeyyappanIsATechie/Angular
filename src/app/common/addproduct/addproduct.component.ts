@@ -17,6 +17,7 @@ import { Router, RouterLink, RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Product } from '../../model/product.model';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-addproduct',
@@ -49,7 +50,8 @@ export class AddproductComponent implements OnInit {
     private service: ProductService,
     private builder: FormBuilder,
     private ref: MatDialogRef<AddproductComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private toaster: ToastrService
   ) {
     this.productForm = this.builder.group({
       id: this.builder.control({ value: 0, disabled: true }),
@@ -100,13 +102,13 @@ export class AddproductComponent implements OnInit {
         if (this._dialogdata.id != 0) {
           _data.id = this._dialogdata.id as number;
           this.service.updateProduct(_data).subscribe((item) => {
-            alert('Product updated successfully');
+            this.toaster.success('Product updated successfully', 'success');
             this.productForm.reset();
             this.ref.close();
           });
         } else {
           this.service.addProduct(_data).subscribe((item) => {
-            alert('Product created successfully');
+            this.toaster.success('Product created successfully', 'success');
             this.productForm.reset();
             this.ref.close();
           });
