@@ -22,7 +22,27 @@
       "gender": "m"
     }
   ],
-  "product":{
-
-  }
+  "product": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "price": 100,
+      "description": "Product 1 Description",
+      "status": true
+    },
+    {
+      "id": 2,
+      "name": "product 2",
+      "price": 10000,
+      "description": "this is product 2",
+      "status": true
+    },
+    {
+      "id": 3,
+      "name": "product 3",
+      "price": 1500,
+      "description": "this is product 3",
+      "status": false
+    }
+  ]
 }

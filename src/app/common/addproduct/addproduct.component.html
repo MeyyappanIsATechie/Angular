@@ -1,0 +1,58 @@
+<form class="example-form" [formGroup]="productForm" (ngSubmit)="ProceedSave()">
+  <mat-card>
+    <mat-card-header>
+      <h2>Create Product</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field class="example-full-width">
+        <mat-label>Id</mat-label>
+        <input
+          type="number"
+          matInput
+          placeholder="Enter product id"
+          formControlName="id"
+          [disabled]="true"
+        />
+      </mat-form-field>
+      <!--password-->
+      <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          placeholder="Enter product name"
+          formControlName="name"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          placeholder="enter product description"
+          formControlName="description"
+        ></textarea>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Price</mat-label>
+        <input
+          type="number"
+          matInput
+          placeholder="Enter product price"
+          formControlName="price"
+        />
+      </mat-form-field>
+      <div>
+        <section class="example-section">
+          <mat-checkbox class="example-margin" formControlName="status"
+            >Status</mat-checkbox
+          >
+        </section>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button type="submit" mat-raised-button color="primary">Save</button>
+      <button mat-raised-button color="accent" routerLink="/product">
+        Cancel
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

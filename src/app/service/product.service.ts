@@ -11,22 +11,22 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   getAllProducts() {
-    return this.http.get<Product[]>(`${this.baseurl}`);
+    return this.http.get<Product[]>(this.baseurl);
   }
 
   getProductById(id: number) {
-    return this.http.get<Product>(`${this.baseurl}/${id}`);
+    return this.http.get<Product>(this.baseurl + '/' + id);
   }
 
   addProduct(product: Product) {
-    return this.http.post<Product>(`${this.baseurl}`, product);
+    return this.http.post<Product>(this.baseurl, product);
   }
 
   updateProduct(product: Product) {
-    return this.http.post<Product>(`${this.baseurl}/${product.id}`, product);
+    return this.http.post<Product>(this.baseurl + '/' + product.id, product);
   }
 
   deleteProduct(id: number) {
-    return this.http.delete(`${this.baseurl}/${id}`);
+    return this.http.delete(this.baseurl + '/' + id);
   }
 }

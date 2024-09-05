@@ -11,3 +11,7 @@ td,
 th {
   width: 25%;
 }
+
+.mdc-button {
+  margin: 2px;
+}

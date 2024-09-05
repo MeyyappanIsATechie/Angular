@@ -8,6 +8,8 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { AddproductComponent } from '../addproduct/addproduct.component';
 
 @Component({
   selector: 'app-product',
@@ -20,12 +22,16 @@ import { CommonModule } from '@angular/common';
     MatButtonModule,
     MatInputModule,
     CommonModule,
+    MatDialogModule,
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
 })
 export class ProductComponent implements OnInit {
-  constructor(public productService: ProductService) {}
+  constructor(
+    public productService: ProductService,
+    private dialog: MatDialog
+  ) {}
   productsList: Product[] = [];
   displayedColumns: string[] = [
     'id',
@@ -49,5 +55,22 @@ export class ProductComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     });
+  }
+
+  createProduct() {
+    this.openPopup();
+  }
+
+  openPopup() {
+    this.dialog
+      .open(AddproductComponent, {
+        width: '40%',
+        enterAnimationDuration: '500ms',
+        exitAnimationDuration: '500ms',
+      })
+      .afterClosed()
+      .subscribe((result: any) => {
+        this.loadProducts();
+      });
   }
 }
