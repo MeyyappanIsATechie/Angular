@@ -3,7 +3,15 @@
     <mat-card-title> Australian Shepherd</mat-card-title>
     <mat-card-subtitle>Herding group</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content> </mat-card-content>
+  <mat-card-content>
+    <div>
+      <ul>
+        <li *ngFor="let item of _custdata; trackBy: trackById">
+          {{ item.firstName }}
+        </li>
+      </ul>
+    </div>
+  </mat-card-content>
 </mat-card>
 <p>{{ title | uppercase }}</p>
 <p>{{ subtitle | lowercase }}</p>

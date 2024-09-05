@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginModel } from '../model/login.model';
 import { User } from '../model/user.model';
+import { Customer } from '../model/master.model';
 
 @Injectable({
   providedIn: 'root',
@@ -21,5 +22,9 @@ export class MasterService {
   }
   isLoggedIn(): boolean {
     return localStorage.getItem('username') !== null;
+  }
+
+  getAllCustomers() {
+    return this.http.get<Customer[]>('https://dummyjson.com/users');
   }
 }

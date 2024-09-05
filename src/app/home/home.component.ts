@@ -6,6 +6,8 @@ import { MatCheckbox } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
 import { ReversePipe } from '../custom/reverse.pipe';
 import { RouterOutlet } from '@angular/router';
+import { MasterService } from '../service/master.service';
+import { Customer } from '../model/master.model';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +24,10 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
+  _custdata!: Customer[];
+  constructor(private service: MasterService) {
+    this.getAllCustomers();
+  }
   title = 'myapp';
   subtitle = 'SUB-TITLE';
   today = new Date();
@@ -48,5 +54,15 @@ export class HomeComponent {
   }
   updateTitle(event: any) {
     this.title = event.target.value;
+  }
+
+  getAllCustomers() {
+    this.service.getAllCustomers().subscribe((item) => {
+      this._custdata = item;
+      console.log(this._custdata);
+    });
+  }
+  trackById(index: number, item: any): number {
+    return item.id; // or any unique identifier
   }
 }
