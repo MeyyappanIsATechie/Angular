@@ -86,4 +86,21 @@
   <div *ngSwitchDefault="">
     <h2>this is default view</h2>
   </div>
+  <div>
+    <input [(ngModel)]="inputdata" />
+    <br />
+    <input [(ngModel)]="inputdata2" />
+    <br />
+    <app-child
+      [inputdata]="inputdata"
+      [inputdata2]="inputdata2"
+      [nameObj]="ticketInfo"
+      (dataUpdater)="updateTitle1($event)"
+    ></app-child>
+  </div>
+  <div>
+    <input placeholder="fruitname" #fruit />
+    <br />
+    <button (click)="addFruit(fruit.value)">Update</button>
+  </div>
 </div>

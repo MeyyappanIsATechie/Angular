@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { Observable, of } from 'rxjs';
@@ -8,6 +8,7 @@ import { ReversePipe } from '../custom/reverse.pipe';
 import { RouterOutlet } from '@angular/router';
 import { MasterService } from '../service/master.service';
 import { Customer } from '../model/master.model';
+import { ChildComponent } from '../common/child/child.component';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,7 @@ import { Customer } from '../model/master.model';
     ReversePipe,
     FormsModule,
     RouterOutlet,
+    ChildComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
@@ -28,6 +30,7 @@ export class HomeComponent {
   constructor(private service: MasterService) {
     this.getAllCustomers();
   }
+  @ViewChild(ChildComponent) _child!: ChildComponent;
   title = 'myapp';
   subtitle = 'SUB-TITLE';
   today = new Date();
@@ -39,6 +42,8 @@ export class HomeComponent {
   observable$: Observable<string> = of('Hello from Observable!');
   isDisabled: boolean = false;
   name: string = '';
+  inputdata: any = '';
+  inputdata2: any = '';
   _class = 'active';
   _color = 'yellow';
   _font = '36px';
@@ -55,6 +60,9 @@ export class HomeComponent {
   updateTitle(event: any) {
     this.title = event.target.value;
   }
+  updateTitle1(title: string) {
+    this.title = title;
+  }
 
   getAllCustomers() {
     this.service.getAllCustomers().subscribe((item) => {
@@ -64,5 +72,9 @@ export class HomeComponent {
   }
   trackById(index: number, item: any): number {
     return item.id; // or any unique identifier
+  }
+  addFruit(fruit: any): void {
+    let res = this._child.updateFruits(fruit);
+    console.log(res);
   }
 }

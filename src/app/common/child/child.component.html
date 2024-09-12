@@ -1,0 +1,13 @@
+<h2>content from home: {{ inputdata }} , {{ inputdata2 }}</h2>
+<br />
+<h2>{{ nameObj | json }}</h2>
+<br />
+<input #name />
+<br />
+<button (click)="dataUpdater.emit(name.value)">transfer</button>
+<br />
+<ul>
+  @for(item of fruits; track item){
+  <li>{{ item }}</li>
+  }
+</ul>
