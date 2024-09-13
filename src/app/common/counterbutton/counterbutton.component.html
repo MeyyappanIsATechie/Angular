@@ -1,0 +1,7 @@
+<button mat-raised-button color="primary" (click)="increment()">+</button>
+<button mat-raised-button color="accent" (click)="decrement()">-</button>
+<button mat-raised-button color="warn" (click)="reset()">reset</button>
+<input #name />
+<button mat-raised-button color="warn" (click)="addUser(name.value)">
+  add player
+</button>

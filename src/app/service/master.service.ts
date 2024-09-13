@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { LoginModel } from '../model/login.model';
 import { User } from '../model/user.model';
 import { Customer } from '../model/master.model';
@@ -8,6 +8,8 @@ import { Customer } from '../model/master.model';
   providedIn: 'root',
 })
 export class MasterService {
+  counterValue = signal<number>(0);
+  players = signal([{ id: 1, name: 'ronaldo' }]);
   constructor(private http: HttpClient) {}
   ProceedLogin(_data: LoginModel) {
     return this.http.get<User[]>(

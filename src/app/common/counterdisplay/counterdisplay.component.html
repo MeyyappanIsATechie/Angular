@@ -1,0 +1,13 @@
+<div style="margin-left: 5%">
+  <p>counter value: {{ displayValue() }}</p>
+</div>
+<div>
+  <p>we have {{ totalPlayers() }} players</p>
+  <p>we have {{ _totalPlayers$ | async }} players</p>
+  <p>we have {{ _signalCount() }} players</p>
+</div>
+<ul>
+  @for(item of service.players(); track item){
+  <li>{{ item.id }} - {{ item.name }}</li>
+  }
+</ul>
