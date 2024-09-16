@@ -11,3 +11,29 @@
   <li>{{ item.id }} - {{ item.name }}</li>
   }
 </ul>
+<div>
+  @if(displayValue() == 0){
+  <p>value is zero</p>
+  } @else if(displayValue() > 0) {
+  <p>value is positive</p>
+  } @else {
+  <p>value is negative</p>
+  }
+</div>
+<!--same logic for ngSwitch-->
+<div [ngSwitch]="displayValue()">
+  <div *ngSwitchCase="0">
+    <h2>this is home view</h2>
+  </div>
+  <div *ngSwitchCase="1">
+    <h2>this is about view</h2>
+  </div>
+  <div *ngSwitchCase="2">
+    <h2>this is contact view</h2>
+  </div>
+  <!--default-->
+  <div *ngSwitchDefault="">
+    <h2>this is default view</h2>
+  </div>
+</div>
+<!--using @switch-->

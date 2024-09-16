@@ -4,3 +4,11 @@
 <div>
   <app-counterdisplay></app-counterdisplay>
 </div>
+<div>
+  @for(item of countries; track item; let i=$index; let c= $count; let e=$even;
+  let o=$odd; let f=$first;){
+  <li [ngClass]="{ red: e, green: o }">
+    {{ c }} - {{ i }} - {{ item }} - {{ e }} - {{ o }} - {{ f }}
+  </li>
+  }
+</div>
