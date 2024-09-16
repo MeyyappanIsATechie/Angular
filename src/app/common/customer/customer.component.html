@@ -3,3 +3,21 @@
 <button mat-button routerLink="/customer/edit/01">Edit</button>
 <router-outlet></router-outlet>
 <input [(ngModel)]="userInput" />
+
+<div><h1 #header>Dummy Text</h1></div>
+<button (click)="load()">load</button>
+@defer(on hover(header);on interaction; on timer(5s)){
+<div><h1>Alternate Dummy Text</h1></div>
+<!--multiple ons/whens are ored-->
+}@placeholder(minimum 500ms) {
+<div><h1>Loading...</h1></div>
+}
+
+<!--conditional deferring with when-->
+@defer(when count>2){
+<div><h1>Loading...</h1></div>
+}@loading {
+<div><h1>actual loading</h1></div>
+}@error {
+<div><h1>An error occurred</h1></div>
+}

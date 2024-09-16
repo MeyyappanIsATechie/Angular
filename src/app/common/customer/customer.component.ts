@@ -12,6 +12,14 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 })
 export class CustomerComponent {
   userInput = '';
+  isLoading = false;
+  count = 1;
+  load() {
+    setTimeout(() => {
+      this.isLoading = true;
+    }, 3000);
+    this.count++;
+  }
   canNavigate() {
     if (this.userInput !== '') {
       if (
