@@ -24,60 +24,25 @@
   ],
   "product": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Product 1",
       "price": 100,
       "description": "Product 1 Description",
       "status": true
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "product 2",
       "price": 10000,
       "description": "this is product 2",
       "status": true
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "product 3",
       "price": 1500,
       "description": "this is product 3",
       "status": false
-    },
-    {
-      "id": "4",
-      "name": "product 4",
-      "price": 105,
-      "description": "brand new",
-      "status": true
-    },
-    {
-      "id": "5",
-      "name": "product 5",
-      "price": 1,
-      "description": "new",
-      "status": true
-    },
-    {
-      "id": "6",
-      "name": "product 6",
-      "price": 1,
-      "description": "1",
-      "status": true
-    },
-    {
-      "id": "7",
-      "name": "fg",
-      "price": 1,
-      "description": "dfef",
-      "status": true
-    },
-    {
-      "id": 8,
-      "name": "prodict 8",
-      "price": 1,
-      "description": "fek",
-      "status": true
     }
   ]
 }
