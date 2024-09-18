@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
+  AsyncSubject,
+  BehaviorSubject,
   concat,
   delay,
   filter,
@@ -10,6 +12,8 @@ import {
   Observable,
   of,
   reduce,
+  ReplaySubject,
+  Subject,
 } from 'rxjs';
 
 @Component({
@@ -39,6 +43,11 @@ export class LearnComponent implements OnInit {
   ticketInfo$ = of(this.ticketInfo);
   data$ = of(1, 2, 3);
   data1$ = of(4, 5, 6).pipe(delay(1000));
+
+  subject$ = new Subject();
+  behaviorSubject$ = new BehaviorSubject(1);
+  replaySubject$ = new ReplaySubject();
+  asyncSubject$ = new AsyncSubject();
 
   ngOnInit(): void {
     // this.observable.subscribe(
@@ -73,5 +82,44 @@ export class LearnComponent implements OnInit {
       .subscribe((data) => {
         console.log(data);
       });
+    this.subject$.subscribe((data) => {
+      console.log(data);
+    });
+    this.subject$.next(10);
+    this.subject$.next(20);
+    this.subject$.subscribe((data) => {
+      console.log('another' + data);
+    });
+    this.subject$.next(30);
+    console.log('====================================');
+    this.behaviorSubject$.subscribe((data) => {
+      console.log(data);
+    });
+    this.behaviorSubject$.next(10);
+    this.behaviorSubject$.next(20);
+    this.behaviorSubject$.subscribe((data) => {
+      console.log('another' + data);
+    });
+    this.behaviorSubject$.next(30);
+    console.log('====================================');
+    console.log('====================================');
+    this.replaySubject$.subscribe((data) => {
+      console.log(data);
+    });
+    this.replaySubject$.next(10);
+    this.replaySubject$.next(20);
+    this.replaySubject$.subscribe((data) => {
+      console.log('another' + data);
+    });
+    this.replaySubject$.next(30);
+    console.log('====================================');
+    //emitting last value before completion
+    this.asyncSubject$.subscribe((data) => {
+      console.log(data);
+    });
+    this.asyncSubject$.next(10);
+    this.asyncSubject$.next(20);
+    this.asyncSubject$.complete();
+    console.log('====================================');
   }
 }
