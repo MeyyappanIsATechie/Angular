@@ -46,7 +46,7 @@ export const routes: Routes = [
       return import('./common/contact/contact.component').then(
         (m) => m.ContactComponent
       );
-    },
+    }, //lazy loading
     canActivate: [authGuard],
   },
   {
