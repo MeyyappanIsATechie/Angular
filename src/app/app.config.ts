@@ -5,6 +5,7 @@ import {
   provideExperimentalZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideEnvironmentNgxMask } from 'ngx-mask';
 
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -28,5 +29,6 @@ export const appConfig: ApplicationConfig = {
     provideStore({ product: productReducerFn }),
     provideEffects(),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+    provideEnvironmentNgxMask(),
   ],
 };

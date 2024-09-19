@@ -14,6 +14,7 @@ import { RegisterComponent } from './common/register/register.component';
 import { ProductComponent } from './common/product/product.component';
 import { LearnComponent } from './common/learn/learn.component';
 import { NewproductComponent } from './common/newproduct/newproduct.component';
+import { MaskComponent } from './common/mask/mask.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -83,6 +84,10 @@ export const routes: Routes = [
   {
     path: 'newproduct',
     component: NewproductComponent,
+  },
+  {
+    path: 'mask',
+    component: MaskComponent,
   },
   { path: '**', component: StatusComponent },
 ];

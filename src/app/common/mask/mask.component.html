@@ -1,0 +1,36 @@
+<h1>Angular ngx-mask</h1>
+<div>
+  <label> number </label>
+  <input mask="0" />
+  <input mask="0*" />
+  <input prefix="+91" mask="(000)-000-0000" [showMaskTyped]="true" />
+</div>
+<!--mask=separator-->
+<div>
+  <label> sep </label>
+  <input mask="separator" thousandSeparator="," [showMaskTyped]="true" />
+</div>
+<div>
+  <label> negatives </label>
+  <input
+    mask="separator"
+    [allowNegativeNumbers]="true"
+    thousandSeparator=","
+    [showMaskTyped]="true"
+  />
+</div>
+<div>
+  <label> string </label>
+  <input mask="SSS" />
+  <input mask="S{3}" />
+</div>
+<div>
+  <label> date n time </label>
+  <input mask="d0/M0/0000" [showMaskTyped]="true" />
+  <input mask="Hh/m0/s0" [showMaskTyped]="true" />
+</div>
+<!--hidden mask-->
+<div>
+  <label>cvv number</label>
+  <input mask="XXX" [hiddenInput]="true" [showMaskTyped]="true" />
+</div>
