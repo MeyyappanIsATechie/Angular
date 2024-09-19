@@ -13,6 +13,7 @@ import { LoginComponent } from './common/login/login.component';
 import { RegisterComponent } from './common/register/register.component';
 import { ProductComponent } from './common/product/product.component';
 import { LearnComponent } from './common/learn/learn.component';
+import { NewproductComponent } from './common/newproduct/newproduct.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -78,6 +79,10 @@ export const routes: Routes = [
   {
     path: 'learn',
     component: LearnComponent,
+  },
+  {
+    path: 'newproduct',
+    component: NewproductComponent,
   },
   { path: '**', component: StatusComponent },
 ];
