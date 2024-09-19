@@ -1,4 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  NgZone,
+  signal,
+  ViewChild,
+} from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
 import { Observable, of } from 'rxjs';
@@ -27,11 +33,17 @@ import { ChildComponent } from '../common/child/child.component';
 })
 export class HomeComponent {
   _custdata!: Customer[];
-  constructor(private service: MasterService) {
+  constructor(private service: MasterService, private ngZone: NgZone) {
     this.getAllCustomers();
+    setTimeout(() => {
+      this.ngZone.run(() => {
+        this.title1.set('Angular myapp');
+      });
+    }, 2000);
   }
   @ViewChild(ChildComponent) _child!: ChildComponent;
   title = 'myapp';
+  title1 = signal<string>('myapp1');
   subtitle = 'SUB-TITLE';
   today = new Date();
   price = 1234.56;
