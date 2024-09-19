@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Product } from '../model/product.model';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  baseurl = 'http://localhost:3000/product';
+  baseurl = environment.apiURL;
+  appTitle = signal<string>(environment.displayName);
 
   constructor(private http: HttpClient) {}
 

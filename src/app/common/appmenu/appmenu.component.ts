@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterLink } from '@angular/router';
+import { ProductService } from '../../service/product.service';
 
 @Component({
   selector: 'app-appmenu',
@@ -20,7 +21,7 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class AppmenuComponent implements DoCheck {
   showMenu = true;
-  constructor(private router: Router) {}
+  constructor(private router: Router, public service: ProductService) {}
   ngDoCheck(): void {
     let currentUrl = this.router.url;
     if (currentUrl.includes('login') || currentUrl.includes('register')) {
