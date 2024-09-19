@@ -1,4 +1,10 @@
-import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  NgModule,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { ProductService } from '../../service/product.service';
 import { Product } from '../../model/product.model';
 import { MatCardModule } from '@angular/material/card';
@@ -10,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { AddproductComponent } from '../addproduct/addproduct.component';
+import { catchError, of, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -27,11 +34,12 @@ import { AddproductComponent } from '../addproduct/addproduct.component';
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, OnDestroy {
   constructor(
     public productService: ProductService,
     private dialog: MatDialog
   ) {}
+  subscription!: Subscription;
   productsList: Product[] = [];
   displayedColumns: string[] = [
     'id',
@@ -48,13 +56,25 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.loadProducts();
   }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
   loadProducts() {
-    this.productService.getAllProducts().subscribe((products: Product[]) => {
-      this.productsList = products;
-      this.dataSource = new MatTableDataSource(this.productsList);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    });
+    let sub1 = this.productService
+      .getAllProducts()
+      .pipe(
+        catchError((err) => {
+          console.log(err.message);
+          return of([]);
+        })
+      )
+      .subscribe((products: Product[]) => {
+        this.productsList = products;
+        this.dataSource = new MatTableDataSource(this.productsList);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      });
+    this.subscription.add(sub1);
   }
 
   createProduct() {
@@ -83,10 +103,11 @@ export class ProductComponent implements OnInit {
 
   deleteProduct(id: number) {
     if (confirm('Are you sure you want to delete this product?')) {
-      this.productService.deleteProduct(id).subscribe(() => {
+      let sub2 = this.productService.deleteProduct(id).subscribe(() => {
         alert('Product deleted successfully');
         this.loadProducts();
       });
+      this.subscription.add(sub2);
     }
   }
 }

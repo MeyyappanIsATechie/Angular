@@ -15,11 +15,12 @@ import {
   ReplaySubject,
   Subject,
 } from 'rxjs';
+import { ChildnewComponent } from '../childnew/childnew.component';
 
 @Component({
   selector: 'app-learn',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ChildnewComponent],
   templateUrl: './learn.component.html',
   styleUrl: './learn.component.css',
 })
